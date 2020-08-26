@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+#tallentaa tähän /python_demo kansioon kaiken mitä lataa esim päivityksen mukana
+  - source: /
+    destination: /home/ec2-user/python_demo
+hooks:
+  BeforeInstall:
+    - location: install_dependencies.sh
+      timeout: 200
+      runas: root
+
+  ApplicationStart:
+    - location: sripts/run_http.sh
+      timeout: 200
+
+  ApplicationStop:
+    - location: sripts/stop_http.sh
+      timeout: 200
