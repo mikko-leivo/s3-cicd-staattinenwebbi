@@ -2,17 +2,25 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.8
+      nodejs: 10
     commands:
       - echo "Installing dependencies"
-      - python -m pip install --upgrade pip
-      - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      #- python -m pip install --upgrade pip
+      #- if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
   pre_build:
     commands:
+      - npm install
       - echo "Testing for dummies"
   build:
     commands:
       - echo "Dummy Test"
+      - npm run build
   post_build:
     commands:
       - echo "Tests run succesfully"
+
+artifacts:
+  files:
+    - build/*
+    - appspec.yml
+    - scripts/

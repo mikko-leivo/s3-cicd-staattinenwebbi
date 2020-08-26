@@ -3,7 +3,7 @@ os: linux
 files:
 #tallentaa tähän /python_demo kansioon kaiken mitä lataa esim päivityksen mukana
   - source: /
-    destination: /home/ec2-user/python_demo
+    destination: /home/ec2-user/var/www/html
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies.sh
@@ -13,7 +13,9 @@ hooks:
   ApplicationStart:
     - location: scripts/run_http.sh
       timeout: 200
+      runas: root
 
   ApplicationStop:
     - location: scripts/stop_http.sh
       timeout: 200
+      runas: root
