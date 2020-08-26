@@ -11,9 +11,9 @@ hooks:
       runas: root
 
   ApplicationStart:
-    - location: sripts/run_http.sh
+    - location: scripts/run_http.sh
       timeout: 200
 
   ApplicationStop:
-    - location: sripts/stop_http.sh
+    - location: scripts/stop_http.sh
       timeout: 200
